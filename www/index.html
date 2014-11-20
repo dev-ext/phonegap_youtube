@@ -1,46 +1,157 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+<head>
+  <meta charset="utf-8">
+  <title>Youtube Data</title>
+  <meta name="description" content="This is HTML5 Boilerplate.">  
+  <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" />
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="fonts.css" rel="stylesheet" type="text/css">
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+
+  <!--[if lt IE 9]><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
+<!--[if (gte IE 6)&(lte IE 8)]>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script> 
+  <![endif]--> 
+  <script type="text/javascript">
+    var mainfn_conf = {};
+    mainfn_conf.themeUrl = '';
+  </script>
+  <script type="text/javascript" src="js/youtube-main.js"></script>
+
+</head>
+<body>
+  <!-- header -->
+  <div class="module main-header">
+    <div class="container">
+      <h1>Youtube DataApi</h1>
+      <div class="row">
+        <form class="yt-search">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="iconic-search iconic"></span></span>
+            <input type="text" class="form-control" placeholder="Search" name="q" value="Music" id="ytQ">
+          </div>
+          <div class="input-group hidden2">
+            <span class="input-group-addon"><span class="iconic-search iconic"></span></span>
+            <input type="text" class="form-control" name="type" value="video">
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="iconic-search iconic"></span></span>
+            <input type="text" class="form-control" placeholder="maxResults" name="maxResults" value="6" less="51">
+          </div>
+          <div class="input-group">
+           <span class="input-group-addon"><span class="iconic-search iconic"></span></span>
+           <select class="form-control" name="safeSearch">
+            <option>strict</option>
+            <option>moderate</option>            
+            <option>none</option>
+          </select>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+        <div class="input-group">
+         <span class="input-group-addon"><span class="iconic-search iconic"></span></span>
+         <select class="form-control" name="order">
+           <option>date</option>
+           <option>rating</option>
+           <option>relevance</option>
+           <option>title</option>
+           <option>videoCount</option>
+           <option>viewCount</option>
+         </select>
+       </div>
+
+
+
+
+       <div class="input-group">
+         <button type="button" class="btn btn-default yt-submit">Submit</button>
+       </div>
+     </form>
+
+   </div>
+
+ </div>
+</div>
+<!-- end header -->
+<!-- content layout -->
+<div class="module content-layout">
+  <div class="container">
+    <div class="row"> 
+      <div class="col-md-3">
+        <div class="row">
+          <h4>Popular Chanel</h4>
+        </div>
+        <div class="row" id="youtube-data-result2">
+
+        </div>
+      </div>
+      <div class="col-md-9" id="youtube-data-result1"></div>   
+    </div>
+
+    <div class="container text-center control-yt hidden2" style="margin-top: 20px;">
+      <a  class="loadmore btn btn-primary" onclick="site.ytubeSearchlistLoadMore()">load more</a>       
+      <a  class="new-search btn btn-primary" onclick="site.newSearch()">New Search</a>      
+    </div>
+  </div>
+</div>
+<!-- end content layout -->
+<!-- Footer layout -->
+<div class="module main-footer ">
+
+
+
+</div>
+<div class="ajaxloading">
+  <div id="squaresWaveG">
+    <div id="squaresWaveG_1" class="squaresWaveG">
+    </div>
+    <div id="squaresWaveG_2" class="squaresWaveG">
+    </div>
+    <div id="squaresWaveG_3" class="squaresWaveG">
+    </div>
+    <div id="squaresWaveG_4" class="squaresWaveG">
+    </div>
+    <div id="squaresWaveG_5" class="squaresWaveG">
+    </div>
+    <div id="squaresWaveG_6" class="squaresWaveG">
+    </div>
+    <div id="squaresWaveG_7" class="squaresWaveG">
+    </div>
+    <div id="squaresWaveG_8" class="squaresWaveG">
+    </div>
+  </div>
+</div>
+<!-- end Footer layout -->
+<script type="text/template" id="tpl1">
+  <%
+  var i = 1;
+  _.each(data, function(row) { %>
+    <% if (i ==1 ) {%>
+      <div class="row">
+        <% }%>
+        <div class=" col-md-4 text-center">         
+          <h4><%= row.snippet.title %></h4>
+          <a href="http://www.youtube.com/watch?v=<%= row.id.videoId %>" class="magnificPopup"> <img class="img-thumbnail" src='<%= row.snippet.thumbnails.high.url %>'></a>
+        </div>
+        <% if (i ==3 ) {
+          i=0;
+          %>
+        </div>
+        <% }%>
+
+        <% 
+        i++;
+      }); %>
+</script>
+<script type="text/template" id="tpl2">
+  <%
+  _.each(data, function(row) { %>
+    <a onclick="site.sitebarChanel_listVideo('<%= row.snippet.channelId %>')"><img src="<%= row.snippet.thumbnails.default.url %>"></a>
+    
+    <%  }); %>
+</script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
 </html>
